@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,10 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(MainActivity.this, "查找不到相关内容",Toast.LENGTH_SHORT).show();
+                    show("");
+                    editText.setText("");
                 }
             }
         });
-
     }
     //查询数据库
     public ArrayList<Memory> query(String str) {

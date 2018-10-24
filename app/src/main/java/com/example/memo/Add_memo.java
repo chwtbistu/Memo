@@ -5,21 +5,17 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.text.Editable;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
-
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,11 +24,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import java.io.File;
-
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -226,7 +218,8 @@ public class Add_memo extends Activity {
             start = position[0];
             editable.insert(0,con.substring(0,position[0]));
             editable.insert(start, spannableString);
-            editable.insert(start + spannableString.length(),con.substring(position[1],con.length()-1));
+            if(position[1] < con.length()-1)
+                editable.insert(start + spannableString.length(),con.substring(position[1],con.length()-1));
             Log.d("MYTAG", "文字接入部分"+start + spannableString.length());
             Log.d("MYTAG", ""+start + spannableString.length());
         }
